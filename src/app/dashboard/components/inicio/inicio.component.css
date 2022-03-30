@@ -1,0 +1,32 @@
+mat-sidenav-container{
+    height: 100%;
+}
+
+mat-sidenav{
+    background: rgba(18, 0, 42, 0.897);
+}
+
+mat-toolbar{
+    background: rgb(180, 180, 180);
+}
+
+mat-icon{
+    color:white;
+}
+
+span{
+    color: white;
+}
+
+.chevron-button{
+    transition: 1800ms ease-in-out;
+    transform: rotate(0deg);
+    right: 0;
+    float: right;
+    position: absolute;
+}
+
+.chevron-button.rotated{
+    transition: 1800ms;
+    transform: rotate(540deg);
+}

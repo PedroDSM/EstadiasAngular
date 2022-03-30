@@ -1,0 +1,39 @@
+.mat-card-header{
+    height: 70px;
+    padding: 15px;
+    color: rgba(18, 0, 42, 0.897);
+    justify-content: center;
+    align-items: center;
+  }
+  .mat-card{
+    width: 500px;
+    height: 300px;
+    border-radius: 15px;
+    border: 1px solid #000;
+    border-color: rgba(18, 0, 42, 0.897);;
+  }
+  .mat-card-content{
+    padding:40px !important;
+    text-align: center;
+  }
+    .main-div{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .text{
+      font-size: 80px;
+      justify-content: center;
+      text-align: center;
+    }
+    .example-full-width1 {
+      width: 100%;
+    }
+    .example-full-width {
+      width: 100%;
+      padding-top: 15px;
+    }
+    .tamaño{
+      font-size: 50px;
+    }

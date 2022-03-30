@@ -1,0 +1,45 @@
+<mat-sidenav-container autosize>
+
+    <mat-sidenav #sidenav mode="side" opened="true">
+
+        <mat-nav-list>
+
+            <mat-list-item>
+                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded" [ngClass]="{'rotated': isExpanded}" class="chevron-button sidenav-button">chevron_right</mat-icon>
+            </mat-list-item>
+            
+            <mat-list-item routerLink="dashboard">
+                <mat-icon mat-list-icon >home</mat-icon>
+                <span *ngIf="isExpanded">Dashboard</span>
+            </mat-list-item>
+
+            <mat-list-item routerLink="info">
+                <mat-icon mat-list-icon >important_devices</mat-icon>
+                <span *ngIf="isExpanded">Info</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon mat-list-icon>person</mat-icon>
+                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Account
+                <mat-menu #subMenu="matMenu">
+                    <mat-list-item>
+                    <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>person</mat-icon>Configure</a>
+                    <a mat-menu-item routerLink="dashboard"><mat-icon mat-list-icon>logout</mat-icon>Log Out</a>
+                </mat-list-item>
+                </mat-menu></span>
+            </mat-list-item>
+
+           
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <div class="content">
+        <mat-toolbar>
+            <H3>SideNavBar</H3>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>
+
