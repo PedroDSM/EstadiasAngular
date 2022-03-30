@@ -5,9 +5,17 @@
     justify-content: center;
     align-items: center;
   }
+  .color{
+    background-color: rgba(18, 0, 42, 0.897);
+    color: white;
+  }
+  .r:hover{
+    background-color: rgba(18, 0, 42, 0.897);
+    color: white;
+  }
   .mat-card{
     width: 500px;
-    height: 300px;
+    height: 460px;
     border-radius: 15px;
     border: 1px solid #000;
     border-color: rgba(18, 0, 42, 0.897);;
@@ -27,7 +35,7 @@
       justify-content: center;
       text-align: center;
     }
-    .example-full-width1 {
+    .example-full-width1{
       width: 100%;
     }
     .example-full-width {

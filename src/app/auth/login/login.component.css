@@ -7,10 +7,10 @@
 }
 .mat-card{
   width: 500px;
-  height: 300px;
+  height: 400px;
   border-radius: 15px;
   border: 1px solid #000;
-  border-color: rgba(18, 0, 42, 0.897);;
+  border-color: rgba(18, 0, 42, 0.897);
 }
 .mat-card-content{
   padding:40px !important;
@@ -29,6 +29,14 @@
   }
   .example-full-width1 {
     width: 100%;
+  }
+  .color{
+    background-color: rgba(18, 0, 42, 0.897);
+    color: white;
+  }
+  .r:hover{
+    background-color: rgba(18, 0, 42, 0.897);
+    color: white;
   }
   .example-full-width {
     width: 100%;

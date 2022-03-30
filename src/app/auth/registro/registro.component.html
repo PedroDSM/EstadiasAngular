@@ -5,6 +5,17 @@
         </mat-card-header>
         <mat-card-content>
             <form class="example-form">
+              <mat-form-field class="example-full-width1" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput [formControl]="nameFormControl" placeholder="Name">
+                <mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
+                  Please enter a valid name
+                </mat-error>
+                <mat-error *ngIf="nameFormControl.hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <br>
                 <mat-form-field class="example-full-width1" appearance="fill">
                   <mat-label>Email</mat-label>
                   <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
@@ -18,11 +29,21 @@
                 <br>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Enter your password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <input matInput [type]="hide ? 'password' : 'text'" matInput [formControl]="passwordFormControl">
+                    <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+                      Please enter a valid Password
+                    </mat-error>
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                   </mat-form-field>
+                  <br>
+                  <button mat-button class="color">Register</button>
+                  <br><br>
+                  <button mat-button class="r" routerLink="/auth/login">You Already Have an Acoount?</button>
                   <br>
               </form>
               
