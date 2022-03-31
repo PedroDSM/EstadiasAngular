@@ -13,17 +13,25 @@
                 <span *ngIf="isExpanded">Dashboard</span>
             </mat-list-item>
 
-            <mat-list-item routerLink="info">
+            <mat-list-item>
                 <mat-icon mat-list-icon >important_devices</mat-icon>
-                <span *ngIf="isExpanded">Info</span>
+                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Vistas
+                    <mat-menu #subMenu="matMenu">
+                        <mat-list-item>
+                        <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>widgets</mat-icon>Categories</a>
+                        <a mat-menu-item routerLink="registro"><mat-icon mat-list-icon>group</mat-icon>Roles</a>
+                        <a mat-menu-item routerLink="info"><mat-icon mat-list-icon>person</mat-icon>Usuarios</a>
+                    </mat-list-item>
+                    </mat-menu>
+                </span>
             </mat-list-item>
 
             <mat-list-item>
-                <mat-icon mat-list-icon>person</mat-icon>
+                <mat-icon mat-list-icon>account_circle</mat-icon>
                 <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Account
                 <mat-menu #subMenu="matMenu">
                     <mat-list-item>
-                    <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>person</mat-icon>Configure</a>
+                    <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>settings</mat-icon>Configure</a>
                     <a mat-menu-item routerLink="dashboard"><mat-icon mat-list-icon>logout</mat-icon>Log Out</a>
                 </mat-list-item>
                 </mat-menu></span>
