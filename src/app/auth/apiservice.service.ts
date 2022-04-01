@@ -14,6 +14,6 @@ import { Injectable } from '@angular/core';
       }
 
       registro(nombre: string,email: string, password: string) {
-        return this.http.post('http://127.0.0.1:3333/auth/register', { nombre,email, password });
+        return this.http.post('http://127.0.0.1:3333/auth/register', { nombre, email, password });
       }
   }

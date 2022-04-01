@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { RegistroServiceService } from '../registro-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { RegistroServiceService } from '../registro-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private auth: RegistroServiceService, private router:Router) { }
+  constructor(private auth: RegistroServiceService, private router:Router, private cookieService:CookieService) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   this.auth.login(this.form.get('email')?.value, this.form.get('password')?.value).subscribe((response: any)=>{
     console.log(response);
     this.router.navigate(['/dashboard']);
+    this.cookieService.set('token',response,4,'/')
   });
 }
 

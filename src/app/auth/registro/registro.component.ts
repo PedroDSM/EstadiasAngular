@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { BehaviorSubject } from 'rxjs';
 import { RegistroServiceService } from '../registro-service.service';
 
 
@@ -11,9 +13,11 @@ import { RegistroServiceService } from '../registro-service.service';
 })
 export class RegistroComponent implements OnInit {
 
+
+
   hide = true;
   
-  constructor(private peticion: RegistroServiceService, private router: Router) { }
+  constructor(private peticion: RegistroServiceService, private router: Router, private cookieService:CookieService) { }
 
   ngOnInit() {
 
@@ -38,6 +42,7 @@ export class RegistroComponent implements OnInit {
   .subscribe((response: any)=>{
     console.log(response);
     this.router.navigate(['/dashboard']);
+    this.cookieService.set('token',response,4,'/')
   });
 }
 }
