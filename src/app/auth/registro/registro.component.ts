@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegistroServiceService } from '../registro-service.service';
 
 
 @Component({
@@ -10,13 +12,32 @@ import {FormControl, Validators} from '@angular/forms';
 export class RegistroComponent implements OnInit {
 
   hide = true;
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  nameFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
-  passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  
+  constructor(private peticion: RegistroServiceService, private router: Router) { }
 
-  constructor() { }
+  ngOnInit() {
 
-  ngOnInit(): void {
   }
 
+  form = new FormGroup({
+    email : new FormControl('', [Validators.required, Validators.email]),
+    nombre : new FormControl('', [Validators.required, Validators.minLength(5)]),
+    password : new FormControl('', [Validators.required, Validators.minLength(8)]),
+  });
+
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.form.controls[controlName].hasError(errorName);
+  }
+
+  send(){
+    if(this.form.invalid){
+      return;
+    }
+  
+  this.peticion.registro(this.form.get('nombre')?.value, this.form.get('email')?.value, this.form.get('password')?.value)
+  .subscribe((response: any)=>{
+    console.log(response);
+    this.router.navigate(['/dashboard']);
+  });
+}
 }
