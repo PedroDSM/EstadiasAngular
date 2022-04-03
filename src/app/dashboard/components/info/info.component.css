@@ -1,0 +1,29 @@
+.example-card {
+    width: 97%;
+    height: 75%;
+    border: 1px solid #000;
+  }
+.mat-card-header{
+  justify-content: center;
+  text-align: center;
+}
+.tr{
+  font-size: 30px;
+}
+.title{
+  font-size: 20px;
+}
+
+.btn{
+  border: 1px solid #000;
+  background-color: rgba(18, 0, 42, 0.897);
+  color: white;
+  font-size: 20px;
+}
+
+.status{
+  border: 1px solid #000;
+  background-color: rgba(0, 3, 42, 0.897);
+  color: white;
+  font-size: 20px;
+}

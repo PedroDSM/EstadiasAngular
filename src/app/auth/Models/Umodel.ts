@@ -1,12 +1,20 @@
 export interface Respuesta {
-    usuario?:      User;
     message?:      string;
+    Fail?: string,
+    usuario?:      User;
     access_token?: AccessToken;
 }
 
 export interface Users {
     usuario?: User[];
 }
+
+export interface Roles {
+    id?:     number;
+    nombre?: string;
+    descripcion?:string;
+  }
+  
 
 export interface AccessToken {
     type?:         string;
@@ -15,7 +23,7 @@ export interface AccessToken {
 
 export interface User {
     nombre?:   string;
-    roles_id? : number;
+    roles_id? : string;
     email?:    string;
     password?: string;
     id?:       number;

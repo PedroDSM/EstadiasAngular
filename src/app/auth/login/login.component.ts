@@ -10,6 +10,8 @@ import { RegistroServiceService } from '../registro-service.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+  error = false
 
   constructor(private auth: RegistroServiceService, private router:Router, private cookieService:CookieService) { }
 
@@ -34,7 +36,12 @@ export class LoginComponent implements OnInit {
   this.auth.login(this.form.get('email')?.value, this.form.get('password')?.value).subscribe((response: any)=>{
     console.log(response);
     this.router.navigate(['/dashboard']);
-    this.cookieService.set('token',response,4,'/')
+    this.cookieService.set('token',response.access_token!.token!,4,'/')
+    alert(response.message)
+  },
+  error=>{
+    this.error = true
+    alert(error.error.Fail)
   });
 }
 

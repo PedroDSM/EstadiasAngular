@@ -9,12 +9,12 @@
             </mat-list-item>
             
             <mat-list-item routerLink="dashboard">
-                <mat-icon mat-list-icon >home</mat-icon>
+                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">home</mat-icon>
                 <span *ngIf="isExpanded">Dashboard</span>
             </mat-list-item>
 
             <mat-list-item>
-                <mat-icon mat-list-icon >important_devices</mat-icon>
+                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">important_devices</mat-icon>
                 <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Vistas
                     <mat-menu #subMenu="matMenu">
                         <mat-list-item>
@@ -27,7 +27,7 @@
             </mat-list-item>
 
             <mat-list-item>
-                <mat-icon mat-list-icon>account_circle</mat-icon>
+                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">account_circle</mat-icon>
                 <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Account
                 <mat-menu #subMenu="matMenu">
                     <mat-list-item>
@@ -46,6 +46,7 @@
         <mat-toolbar>
             <H3>SideNavBar</H3>
         </mat-toolbar>
+
         <router-outlet></router-outlet>
     </div>
 
