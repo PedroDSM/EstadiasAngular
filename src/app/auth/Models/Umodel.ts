@@ -6,25 +6,20 @@ export interface Respuesta {
 }
 
 export interface Users {
-    usuario?: User[];
+    usuarios?: User[];
 }
-
-export interface Roles {
-    id?:     number;
-    nombre?: string;
-    descripcion?:string;
-  }
-  
 
 export interface AccessToken {
     type?:         string;
+    refreshToken?: string;
     token?:        string;
 }
 
 export interface User {
     nombre?:   string;
-    roles_id? : string;
+    roles_id? : number;
     email?:    string;
     password?: string;
+    status?: string;
     id?:       number;
 }

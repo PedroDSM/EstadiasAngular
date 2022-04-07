@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginGuardGuard } from '../guards/login-guard.guard';
 
+
 const routes: Routes = [
   {
     path:'login',
     component: LoginComponent,
     canActivate: [LoginGuardGuard]
+    
   },
   {
     path:'registro',

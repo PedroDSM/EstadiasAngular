@@ -32,7 +32,7 @@
                 <mat-menu #subMenu="matMenu">
                     <mat-list-item>
                     <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>settings</mat-icon>Configure</a>
-                    <a mat-menu-item routerLink="dashboard"><mat-icon mat-list-icon>logout</mat-icon>Log Out</a>
+                    <a mat-menu-item (click)="logout()"><mat-icon mat-list-icon>logout</mat-icon>Log Out</a>
                 </mat-list-item>
                 </mat-menu></span>
             </mat-list-item>

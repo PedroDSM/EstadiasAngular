@@ -15,9 +15,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule}from '@angular/material/grid-list';
+import { UpdateComponent } from './components/info/Detalles/update/update.component';
 
 @NgModule({
-  declarations: [InicioComponent, DashboardComponent, InfoComponent],
+  declarations: [InicioComponent, UpdateComponent, DashboardComponent, InfoComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
