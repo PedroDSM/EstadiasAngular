@@ -15,6 +15,11 @@ export interface AccessToken {
     token?:        string;
 }
 
+export interface Login{
+    email?:    string;
+    password?: string;
+}
+
 export interface User {
     nombre?:   string;
     roles_id? : number;

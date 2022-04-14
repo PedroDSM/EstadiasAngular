@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://127.0.0.1:3333'
+  urlU: 'http://127.0.0.1:3333/auth/',
+  urlG: 'http://127.0.0.1:3333/Users/'
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

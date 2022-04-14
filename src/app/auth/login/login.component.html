@@ -4,7 +4,10 @@
         <mat-card-title class="text">Sing In<mat-icon mat-list-icon class="tamaño">login</mat-icon></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="example-form"[formGroup]="form">
+      <img *ngIf="loading.isLoading"
+      src="assets/Spinner.gif"
+      alt="loading"/>
+        <form class="example-form"[formGroup]="form" *ngIf="!loading.isLoading" [hidden]="!form">
             <mat-form-field class="example-full-width1" appearance="fill">
               <mat-label>Email</mat-label>
               <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
@@ -22,12 +25,12 @@
                 </button>
               </mat-form-field>
               <br>
-              <button mat-button class="color" (click)="send()">Login</button>
-              <br><br>
+              <button mat-button [disabled]="isDisabled" class="color" (click)="send()">Login</button>
+              <br>
+              <br>
               <button mat-button class="r" routerLink="/auth/registro">You Don't Have an Acoount?</button>
               <br>
           </form>
-          
         </mat-card-content>
 </mat-card>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { RegistroServiceService } from '../auth/registro-service.service';
+import { RegistroServiceService } from '../auth/services/registro-service.service';
 import { Router } from '@angular/router';
 
 @Injectable({

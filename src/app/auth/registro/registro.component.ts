@@ -1,9 +1,9 @@
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component,OnInit, Output } from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { RegistroServiceService } from '../registro-service.service';
+import { RegistroServiceService } from 'src/app/auth/services/registro-service.service';
+import { LoadingHandler } from '../Models/loading-handler';
 
 
 @Component({
@@ -12,38 +12,45 @@ import { RegistroServiceService } from '../registro-service.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-
-
-
   hide = true;
-  
-  constructor(private peticion: RegistroServiceService, private router: Router, private cookieService:CookieService) { }
+  loading = new LoadingHandler()
+  form = this.fb.group({
+    nombre:['', {
+      validators: [Validators.required, Validators.minLength(5)],
+    }],
+    email: ['', {
+      validators: [Validators.required, Validators.email],
+    }],
+    password:['',{
+      validators:[Validators.required, Validators.minLength(8)],
+    }],
+    status:['Active'],
+    roles_id:['4']
+  })
+  isDisabled = false;
+
+  constructor( private fb:FormBuilder,  private peticion: RegistroServiceService, private router: Router, private cookieService:CookieService) { }
 
   ngOnInit() {
 
   }
-
-  form = new FormGroup({
-    email : new FormControl('', [Validators.required, Validators.email]),
-    nombre : new FormControl('', [Validators.required, Validators.minLength(5)]),
-    password : new FormControl('', [Validators.required, Validators.minLength(8)]),
-    status: new FormControl('Active'),
-    roles_id: new FormControl('4')
-  });
 
   public hasError = (controlName: string, errorName: string) =>{
     return this.form.controls[controlName].hasError(errorName);
   }
 
   send(){
+    this.loading.start()
     if(this.form.invalid){
       return;
     }
-  
-  this.peticion.registro(this.form.get('nombre')?.value, this.form.get('email')?.value, this.form.get('password')?.value, this.form.get('status')?.value, this.form.get('roles_id')?.value)
+
+  this.peticion.registro(this.form.value)
   .subscribe((response: any)=>{
+    this.isDisabled = true;
+    this.loading.finish()
     console.log(response);
-    this.router.navigate(['/dashboard']);
+    setTimeout(() =>this.router.navigate(['/dashboard']), 1000);
     this.cookieService.set('token',response.token!.token!,1,'/')
   });
 }

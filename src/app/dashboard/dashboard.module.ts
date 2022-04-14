@@ -13,12 +13,20 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule}from '@angular/material/grid-list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UpdateComponent } from './components/info/Detalles/update/update.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { VerComponent } from './components/info/vistas/ver/ver.component';
+
 
 @NgModule({
-  declarations: [InicioComponent, UpdateComponent, DashboardComponent, InfoComponent],
+  declarations: [InicioComponent, VerComponent,DashboardComponent, InfoComponent, UpdateComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -27,12 +35,27 @@ import { UpdateComponent } from './components/info/Detalles/update/update.compon
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
     MatListModule,
     MatToolbarModule,
     MatMenuModule,
     HttpClientModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} },
+  ],
+  entryComponents:[
+    UpdateComponent,
+    VerComponent
   ]
 })
 export class DashboardModule { }

@@ -13,14 +13,12 @@
                 <span *ngIf="isExpanded">Dashboard</span>
             </mat-list-item>
 
-            <mat-list-item>
+            <mat-list-item *ngIf="mostrar == 1">
                 <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">important_devices</mat-icon>
-                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Vistas
-                    <mat-menu #subMenu="matMenu">
-                        <mat-list-item>
-                        <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>widgets</mat-icon>Categories</a>
-                        <a mat-menu-item routerLink="registro"><mat-icon mat-list-icon>group</mat-icon>Roles</a>
-                        <a mat-menu-item routerLink="info"><mat-icon mat-list-icon>person</mat-icon>Usuarios</a>
+                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu"> {{menu[0].title}}
+                    <mat-menu #subMenu="matMenu" >
+                        <mat-list-item *ngFor="let link of menu[0].links">
+                        <a mat-menu-item routerLink="{{link.link}}"><mat-icon mat-list-icon>{{link.icon}}</mat-icon>{{link.name}}</a>
                     </mat-list-item>
                     </mat-menu>
                 </span>
@@ -28,10 +26,10 @@
 
             <mat-list-item>
                 <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">account_circle</mat-icon>
-                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">Account
+                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">{{menu[1].title}}
                 <mat-menu #subMenu="matMenu">
-                    <mat-list-item>
-                    <a mat-menu-item routerLink="login"><mat-icon mat-list-icon>settings</mat-icon>Configure</a>
+                    <mat-list-item *ngFor="let link of menu[1].links" >
+                    <a *ngIf="mostrar == 1" mat-menu-item routerLink="{{link.link}}"><mat-icon mat-list-icon>{{link.icon}}</mat-icon>{{link.name}}</a>
                     <a mat-menu-item (click)="logout()"><mat-icon mat-list-icon>logout</mat-icon>Log Out</a>
                 </mat-list-item>
                 </mat-menu></span>

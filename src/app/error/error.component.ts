@@ -18,7 +18,7 @@ import {
         opacity: 0
       })),
       transition(":enter", [
-        animate(1000, style({
+        animate(800, style({
           transform:"translateY(0)",
           opacity:1
         }))

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
-import { LoginGuardGuard } from './guards/login-guard.guard';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   { path: 'error', 
-  component: ErrorComponent
+    component: ErrorComponent,
+    canActivate: [AuthGuardGuard],
   },
   {
    path:'**',

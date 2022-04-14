@@ -8,6 +8,7 @@
   .color{
     background-color: rgba(18, 0, 42, 0.897);
     color: white;
+    margin-right: 5px;
   }
   .r:hover{
     background-color: rgba(18, 0, 42, 0.897);

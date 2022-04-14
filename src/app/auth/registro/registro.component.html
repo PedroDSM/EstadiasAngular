@@ -4,7 +4,10 @@
             <mat-card-title class="text">Sing Up<mat-icon mat-list-icon class="tamaño">start</mat-icon></mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <form class="example-form"[formGroup]="form" autocomplete="off">
+          <img *ngIf="loading.isLoading"
+          src="assets/Spinner.gif"
+          alt="loading"/>
+            <form class="example-form"[formGroup]="form" *ngIf="!loading.isLoading" [hidden]="!form">
               <mat-form-field class="example-full-width1" appearance="fill">
                 <mat-label>Name</mat-label>
                 <input type="text" matInput formControlName="nombre" placeholder="Name">
@@ -29,7 +32,7 @@
                     </button>
                   </mat-form-field>
                   <br>
-                  <button mat-button class="color" (click)="send()">Register</button>
+                  <button mat-button [disabled]="isDisabled" class="color" (click)="send()">Register</button>
                   <br><br>
                   <button mat-button class="r" routerLink="/auth/login">You Already Have an Acoount?</button>
                   <br>

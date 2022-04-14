@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { RegistroServiceService } from '../registro-service.service';
+import { RegistroServiceService } from 'src/app/auth/services/registro-service.service';
+import { LoadingHandler } from '../Models/loading-handler';
 
 @Component({
   selector: 'app-login',
@@ -13,33 +14,42 @@ export class LoginComponent implements OnInit {
   
   error = false
 
-  constructor(private auth: RegistroServiceService, private router:Router, private cookieService:CookieService) { }
+  loading = new LoadingHandler()
+
+  form = this.fb.group({
+    email: ['', {
+      validators: [Validators.required, Validators.email],
+    }],
+    password:['',{
+      validators:[Validators.required, Validators.minLength(8)],
+    }]
+  })
+  hide = true;
+
+  isDisabled = false;
+  constructor(private fb:FormBuilder, private auth: RegistroServiceService, private router:Router, private cookieService:CookieService) { }
 
   ngOnInit(): void {
   }
-
-  hide = true;
-  form = new FormGroup({
-    email : new FormControl('', [Validators.required, Validators.email]),
-    password : new FormControl('', [Validators.required, Validators.minLength(8)]),
-    status: new FormControl('Active'),
-    roles_id: new FormControl('4')
-  });
 
   public hasError = (controlName: string, errorName: string) =>{
     return this.form.controls[controlName].hasError(errorName);
   }
 
   send(){
+
+    this.loading.start()
     if(this.form.invalid){
       return;
     }
   
-  this.auth.login(this.form.get('email')?.value, this.form.get('password')?.value,this.form.get('status')?.value, this.form.get('roles_id')?.value).subscribe((response: any)=>{
+  this.auth.login(this.form.value).subscribe((response: any)=>{
+    this.isDisabled = true;
+    this.loading.finish()
     console.log(response);
-    this.router.navigate(['/dashboard']);
+    setTimeout(() =>this.router.navigate(['/dashboard']), 1000);
     this.cookieService.set('token',response.token!.token!,4,'/')
-    alert(response.message)
+    // alert(response.message)
   },
   error=>{
     this.error = true
