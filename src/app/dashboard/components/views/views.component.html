@@ -1,1 +1,82 @@
-<p>views works!</p>
+<div class="search-div">
+    <button mat-raised-button (click)="crear()">
+      <mat-icon>add</mat-icon>Create
+    </button>
+  <mat-form-field appearance="standard" class="search-form-field">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+  </div>
+    <div class="mat-elevation-z8" >
+    <table mat-table [dataSource]="dataSource" matSort>
+    
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="icono">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Icono </th>
+          <td mat-cell *matCellDef="let element"> {{element.icono}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="nivel">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nivel </th>
+            <td mat-cell *matCellDef="let element"> {{element.nivel}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="categorias">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+            <td mat-cell *matCellDef="let element"> {{element.categoria.nombre}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let element" >
+              <span style="color: green" *ngIf="element.status">
+                <mat-icon>check</mat-icon>
+              </span>
+              <span style="color: red" *ngIf="!element.status">
+                <mat-icon>close</mat-icon>
+              </span>
+            </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let row" style="text-align: left;">
+              <span class="pointer" style="color: black;" matTooltip="Opciones" [matMenuTriggerFor]="subMenu">
+                <mat-menu #subMenu="matMenu" >
+                  <mat-list-item class="pointer">
+                    <span class="pointer" style="color: rgb(36, 1, 46);" class="text" (click)="view(row)">
+                      <mat-icon>search</mat-icon>
+                      Ver Categoria
+                    </span><br>
+                    <span class="pointer" style="color: rgb(0, 13, 86);" class="text" (click)="update(row)">
+                      <mat-icon>edit</mat-icon>
+                      Editar Categoria
+                    </span><br>
+                    <span class="pointer" style="color: black;"  class="text" (click)="status(row)">
+                      <mat-icon class="pointer">how_to_reg</mat-icon>
+                      Estatus Categoria
+                    </span>
+              </mat-list-item>
+              </mat-menu>
+                <mat-icon>more_vert</mat-icon>
+              </span>
+          </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of views"></mat-paginator>
+      
+    </div>

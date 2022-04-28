@@ -26,7 +26,7 @@ export class UpdateCatComponent implements OnInit {
   isDisabled = false;
   error=false;
 
-  constructor(private fb:FormBuilder, private peticion: CategoriasService,public dialogRef: MatDialogRef<UpdateCatComponent>,@Inject(MAT_DIALOG_DATA) public data:any, ) { }
+  constructor(private fb:FormBuilder, private peticion: CategoriasService,public dialogRef: MatDialogRef<UpdateCatComponent>,@Inject(MAT_DIALOG_DATA) public data:any ) { }
 
   ngOnInit(): void {
 

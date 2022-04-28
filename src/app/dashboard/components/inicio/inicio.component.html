@@ -8,6 +8,7 @@
                 <mat-icon mat-list-icon (click)="isExpanded = !isExpanded" [ngClass]="{'rotated': isExpanded}" class="chevron-button sidenav-button">chevron_right</mat-icon>
             </mat-list-item>
             
+
             <mat-list-item routerLink="dashboard">
                 <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">home</mat-icon>
                 <span *ngIf="isExpanded">Dashboard</span>
@@ -35,8 +36,12 @@
                 </mat-menu></span>
             </mat-list-item>
 
+            <mat-list-item routerLink="vistas">
+                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">important_devices</mat-icon>
+                <span *ngIf="isExpanded">Views</span>
+            </mat-list-item>
            
-        </mat-nav-list>
+        </mat-nav-list> 
 
     </mat-sidenav>
 

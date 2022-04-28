@@ -1,1 +1,46 @@
-<p>crear-view works!</p>
+<div class="main-div">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title class="text">Create View<mat-icon mat-list-icon class="tamaño"> important_devices</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img *ngIf="loading.isLoading"
+          src="assets/Spinner.gif"
+          alt="loading"/>
+            <form class="example-form"[formGroup]="form" *ngIf="!loading.isLoading" [hidden]="!form">
+              <mat-form-field class="example-full-width1" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="nombre" placeholder="Name">
+                <mat-error *ngIf="hasError('nombre', 'required')">Name is required</mat-error>
+              </mat-form-field>
+              <br>
+                <mat-form-field class="example-full-width1" appearance="fill">
+                  <mat-label>Icono</mat-label>
+                  <input type="text" matInput formControlName="icono" placeholder="Aparece Alado">
+                  <mat-error *ngIf="hasError('icono', 'required')">Icon is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width1" appearance="fill">
+                    <mat-label>Nivel</mat-label>
+                    <input type="text" matInput formControlName="nivel" placeholder="Importancia">
+                    <mat-error *ngIf="hasError('nivel', 'required')">Nivel is required</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field class="example-full-width1" appearance="fill">
+                    <mat-label>Categoria</mat-label>
+                    <input type="text" matInput formControlName="categorias" placeholder="Categoria_id">
+                    <mat-error *ngIf="hasError('categorias', 'required')">Category is required</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field class="example-full-width1" appearance="fill">
+                    <mat-label>Ruta</mat-label>
+                    <input type="text" matInput formControlName="ruta" placeholder="Ruta a Mandar ">
+                    <mat-error *ngIf="hasError('ruta', 'required')">Route is required</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <button mat-button [disabled]="isDisabled" class="color" (click)="send()">Create</button>
+              </form>
+              
+            </mat-card-content>
+    </mat-card>
+    </div>

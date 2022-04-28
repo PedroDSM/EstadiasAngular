@@ -21,6 +21,10 @@ import { StatusCatComponent } from './components/categorias/componentes/status-c
 import { UpdateCatComponent } from './components/categorias/componentes/update-cat/update-cat.component';
 import { ShowCatComponent } from './components/categorias/componentes/show-cat/show-cat.component';
 import { MaterialModule } from '../material/material.module';
+import { CrearViewComponent } from './components/views/componentes/crear-view/crear-view.component';
+import { ShowViewComponent } from './components/views/componentes/show-view/show-view.component';
+import { StatusViewComponent } from './components/views/componentes/status-view/status-view.component';
+import { UpdateViewComponent } from './components/views/componentes/update-view/update-view.component';
 
 @NgModule({
   declarations: [InicioComponent, 
@@ -39,7 +43,12 @@ import { MaterialModule } from '../material/material.module';
     CrearCatComponent,
     StatusCatComponent, 
     UpdateCatComponent,
-    ShowCatComponent],
+    CrearViewComponent,
+    ShowViewComponent,
+    StatusViewComponent,
+    UpdateViewComponent,
+    ShowCatComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

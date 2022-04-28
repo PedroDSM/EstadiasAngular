@@ -1,1 +1,15 @@
-<p>status-view works!</p>
+<mat-card>
+    <mat-card-header class="a">
+        <mat-card-title class="t">Change Status</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="al">
+        <mat-card-title class="tu">¿Are you Sure That You Want To Change The Status?</mat-card-title>
+        <img *ngIf="loading.isLoading"
+        src="assets/Spinner.gif"
+        alt="loading"/>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+        <button mat-button style="background-color: rgb(16, 5, 143); color:white;" [disabled]="isDisabled" (click)="status()">YES</button>
+        <button mat-button style="background-color: brown; color:white;" [disabled]="isDisabled" (click)="closeDialog()">NO</button>
+    </mat-card-actions>
+</mat-card>

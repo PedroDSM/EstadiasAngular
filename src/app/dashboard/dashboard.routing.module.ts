@@ -7,6 +7,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { RoleGuardGuard } from '../guards/role-guard.guard';
 import { RolesComponent } from './components/roles/roles.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
+import { ViewsComponent } from './components/views/views.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,12 @@ const routes: Routes = [
       {
         path:'categorias',
         component:CategoriasComponent,
+        canActivate: [AuthGuardGuard, RoleGuardGuard],
+        data:  {expectedRoles: [1]}
+      },
+      {
+        path:'vistas',
+        component:ViewsComponent,
         canActivate: [AuthGuardGuard, RoleGuardGuard],
         data:  {expectedRoles: [1]}
       }

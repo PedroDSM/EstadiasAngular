@@ -16,8 +16,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
-
+import { MatTreeModule } from '@angular/material/tree';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [],
@@ -25,6 +25,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CommonModule
   ],
   exports:[
+    MatTreeModule,
+    MatExpansionModule,
     MatCardModule,
     MatSidenavModule,
     MatButtonModule,

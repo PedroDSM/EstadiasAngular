@@ -30,7 +30,7 @@ export const LinksSideMenu:Item[] = [
                 name:'Configuracion',
                 link:'dashboard',
             },
-        ]
+        ],
     }
 ]
 

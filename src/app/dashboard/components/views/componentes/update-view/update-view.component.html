@@ -1,1 +1,48 @@
-<p>update-view works!</p>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title class="text">Edit View<mat-icon mat-list-icon class="tamaño">edit</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img *ngIf="loading.isLoading"
+          src="assets/Spinner.gif"
+          alt="loading"/>
+            <form class="example-form"[formGroup]="form" *ngIf="!loading.isLoading" [hidden]="!form">
+              <mat-form-field class="example-full-width1" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="nombre" placeholder="Name">
+                <mat-error *ngIf="hasError('nombre', 'required')">Name is required</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width1" appearance="fill">
+                <mat-label>Icono</mat-label>
+                <input type="text" matInput formControlName="icono" placeholder="Aparece Alado">
+                <mat-error *ngIf="hasError('icono', 'required')">Icon is required</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width1" appearance="fill">
+                  <mat-label>Nivel</mat-label>
+                  <input type="text" matInput formControlName="nivel" placeholder="Importancia">
+                  <mat-error *ngIf="hasError('nivel', 'required')">Nivel is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width1" appearance="fill">
+                    <mat-label>Categoria</mat-label>
+                    <input type="text" matInput formControlName="categorias" placeholder="categoria">
+                    <mat-error *ngIf="hasError('categorias', 'required')">Category is required</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field class="example-full-width1" appearance="fill">
+                    <mat-label>Ruta</mat-label>
+                    <input type="text" matInput formControlName="ruta" placeholder="A donde Manda">
+                    <mat-error *ngIf="hasError('ruta', 'required')">Route is required</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <button mat-button [disabled]="isDisabled" style="margin-right: 5px;" class="color" (click)="updateU()">Update</button>
+                  <button mat-button style="background-color: brown; color:white" (click)="closeDialog()">Cancel</button>
+                  <br>
+              </form>
+            </mat-card-content>
+    </mat-card>
+
+

@@ -1,9 +1,12 @@
+import { Vista } from "./Vmodel";
+
 export interface Categorias {
-    Categorias?: Categoria[];
+    categorias?: Categoria[];
 }
 
 export interface Respuesta {
     Categoria?: Categoria;
+    categorias?:Categorias[],
     message?:   string;
     Fail?: string,
 }
@@ -13,4 +16,11 @@ export interface Categoria {
     icono?:  string;
     nivel?:  number;
     status?: number;
+    categorias?:Categorias[],
+    vistas?:     Vista[];
+
+    name?:string;
+    children?:     Vista[];
+
 }
+
