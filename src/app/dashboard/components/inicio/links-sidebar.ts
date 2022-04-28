@@ -1,13 +1,13 @@
 import { Item } from "src/app/auth/Models/SideItems";
 export const LinksSideMenu:Item[] = [
     {
-        title:'Views',
+        title:'Categorias',
         roles: [1],
         links:[
             {
-                icon: 'widgets',
+                icon: 'storage',
                 name:'Categorias',
-                link:'dashboard',
+                link:'categorias',
             },
             {
                 icon: 'group',

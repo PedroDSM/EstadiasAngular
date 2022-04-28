@@ -5,6 +5,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InfoComponent } from './components/info/info.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RoleGuardGuard } from '../guards/role-guard.guard';
+import { RolesComponent } from './components/roles/roles.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,18 @@ const routes: Routes = [
       {
         path:'info',
         component:InfoComponent,
+        canActivate: [AuthGuardGuard, RoleGuardGuard],
+        data:  {expectedRoles: [1]}
+      },
+      {
+        path:'roles',
+        component:RolesComponent,
+        canActivate: [AuthGuardGuard, RoleGuardGuard],
+        data:  {expectedRoles: [1]}
+      },
+      {
+        path:'categorias',
+        component:CategoriasComponent,
         canActivate: [AuthGuardGuard, RoleGuardGuard],
         data:  {expectedRoles: [1]}
       }

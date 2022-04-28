@@ -25,7 +25,7 @@ export class RegistroComponent implements OnInit {
       validators:[Validators.required, Validators.minLength(8)],
     }],
     status:['Active'],
-    roles_id:['4']
+    roles_id:['1']
   })
   isDisabled = false;
 

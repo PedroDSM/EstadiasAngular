@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   urlU: 'http://127.0.0.1:3333/auth/',
-  urlG: 'http://127.0.0.1:3333/Users/'
+  urlG: 'http://127.0.0.1:3333/Users/',
+  urlR: 'http://127.0.0.1:3333/Roles/',
+  urlC: 'http://127.0.0.1:3333/Categorias/',
+  urlV: 'http://127.0.0.1:3333/Vistas/',
 };
 /*
  * For easier debugging in development mode, you can import the following file

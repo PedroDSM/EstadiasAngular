@@ -1,10 +1,17 @@
 export interface Respuesta {
-    Roles?:   Roles;
+    rol?:   Rol;
     message?: string;
+    Fail?: string,
 }
 
-export interface Roles {
+export interface Rol {
     nombre?:      string;
     descripcion?: string;
     status?:      string;
 }
+
+export interface Roles { 
+    roles?: Rol[];
+}
+
+

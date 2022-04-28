@@ -5,9 +5,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UpdateComponent } from './Detalles/update/update.component';
 import { VerComponent } from './vistas/ver/ver.component';
+import { StatusComponent } from './status/status.component';
+import { Rol } from 'src/app/auth/Models/Rmodel';
 
 @Component({
   selector: 'app-info',
@@ -18,6 +20,7 @@ import { VerComponent } from './vistas/ver/ver.component';
 export class InfoComponent implements OnInit, OnDestroy, AfterViewInit {
   
   usuarios: User[] = []
+  roles:Rol={}
   displayedColumns: string[] = ['id', 'nombre', 'roles_id', 'email', 'status', 'acciones']
   sus!: Subscription
   dataSource = new MatTableDataSource<User>(this.usuarios)
@@ -66,6 +69,12 @@ open(row:any){
 
 view(row:any){
   this.dialog.open(VerComponent, { 
+    width:'60%',
+    data:row
+  });
+}
+status(row:any){
+  this.dialog.open(StatusComponent, { 
     width:'60%',
     data:row
   });

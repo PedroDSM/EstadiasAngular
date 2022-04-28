@@ -22,9 +22,6 @@ export class RegistroServiceService {
   }
 
   token = this.getJwtToken()
-  header = new HttpHeaders().
-  append('Content-Type', 'application/json').
-  append('Authorization',`Bearer ${this.token}`)
   
   
   login(info:Login): Observable<any> {
@@ -43,19 +40,19 @@ export class RegistroServiceService {
   }
 
   getAll(): Observable<any>{  
-    return this.http.get<Respuesta>(environment.urlG+'users', {headers:this.header})
+    return this.http.get<Respuesta>(environment.urlG+'users')
   }
   getOne(){
-    return this.http.get<Respuesta>(environment.urlG+'user',{headers:this.header})
+    return this.http.get<Respuesta>(environment.urlG+'user')
   } 
   getUser(id:number): Observable<any>{
-    return this.http.get<Respuesta>(environment.urlG+'user'+'/'+id, {headers:this.header})
+    return this.http.get<Respuesta>(environment.urlG+'user'+'/'+id)
   }
-  delete(id:number){
-    return this.http.delete<Respuesta>(environment.urlG+'user'+'/'+id, {headers:this.header})
+  status(id:number){
+    return this.http.delete<Respuesta>(environment.urlG+'user'+'/'+id)
   }
   Put(id:any, info: User): Observable<any>{
-    return this.http.put<Respuesta>(environment.urlG+'user'+'/'+id, info, {headers:this.header})
+    return this.http.put<Respuesta>(environment.urlG+'user'+'/'+id, info)
     .pipe(
       tap(() => {
         this._refresh$.next();

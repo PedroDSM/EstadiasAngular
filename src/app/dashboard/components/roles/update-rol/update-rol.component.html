@@ -1,0 +1,28 @@
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title class="text">Edit Rol<mat-icon mat-list-icon class="tamaño">edit</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img *ngIf="loading.isLoading"
+          src="assets/Spinner.gif"
+          alt="loading"/>
+            <form class="example-form"[formGroup]="form" *ngIf="!loading.isLoading" [hidden]="!form">
+              <mat-form-field class="example-full-width1" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="nombre" placeholder="Name">
+                <mat-error *ngIf="hasError('nombre', 'required')">Name is required</mat-error>
+                <mat-error *ngIf="hasError('nombre', 'minlength')">You have more than 5 characters</mat-error>
+              </mat-form-field>
+              <br>
+                <mat-form-field class="example-full-width1" appearance="fill">
+                  <mat-label>Descripcion</mat-label>
+                  <input type="text" matInput formControlName="descripcion" placeholder="Sirve para...">
+                </mat-form-field>
+                <br>
+                  <button mat-button [disabled]="isDisabled" class="color" (click)="updateU()">{{actionBtn}}</button>
+                  <button mat-button style="background-color: brown; color:white" (click)="closeDialog()">Cancel</button>
+                  <br>
+              </form>
+            </mat-card-content>
+    </mat-card>

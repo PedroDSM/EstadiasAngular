@@ -22,9 +22,7 @@ export class UpdateComponent implements OnInit {
     password:['',{
       validators:[Validators.required, Validators.minLength(8)],
     }],
-    roles_id:[4,{
-      validators:[Validators.required],
-    }]
+    roles_id:['']
   })
 
   isDisabled=false
@@ -41,7 +39,6 @@ export class UpdateComponent implements OnInit {
     this.actionBtn = "Update"
     this.form.controls['nombre'].setValue(this.data.nombre)
     this.form.controls['email'].setValue(this.data.email)
-    this.form.controls['password'].setValue(this.data.password)
     this.form.controls['roles_id'].setValue(this.data.roles_id)
   }
 
@@ -60,7 +57,8 @@ updateU(){
   this.loading.start()
 
   if(this.form.invalid){
-    return;
+    this.loading.finish()
+    console.log('error')
   }
   this.peticion.Put(this.data.id,this.form.value)
   .subscribe((res:any)=>{
@@ -69,10 +67,6 @@ updateU(){
       this.form.reset()
       this.loading.finish()
       setTimeout(() =>this.dialogRef.close(), 1000)
-    },
-    error=>{
-      this.error = true
-      alert(error.error.Fail)
     });
 }
 }
