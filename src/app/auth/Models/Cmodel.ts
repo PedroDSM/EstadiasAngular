@@ -16,11 +16,10 @@ export interface Categoria {
     icono?:  string;
     nivel?:  number;
     status?: number;
-    categorias?:Categorias[],
     vistas?:     Vista[];
-
-    name?:string;
-    children?:     Vista[];
+    Nombre?:string;
+    array?:     Vista[];
 
 }
+
 

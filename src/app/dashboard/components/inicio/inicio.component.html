@@ -2,46 +2,25 @@
 
     <mat-sidenav #sidenav mode="side" opened="true">
 
-        <mat-nav-list>
+        <mat-nav-list >
 
             <mat-list-item>
                 <mat-icon mat-list-icon (click)="isExpanded = !isExpanded" [ngClass]="{'rotated': isExpanded}" class="chevron-button sidenav-button">chevron_right</mat-icon>
             </mat-list-item>
             
-
-            <mat-list-item routerLink="dashboard">
-                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">home</mat-icon>
-                <span *ngIf="isExpanded">Dashboard</span>
-            </mat-list-item>
-
-            <mat-list-item *ngIf="mostrar == 1">
-                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded"> widgets</mat-icon>
-                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu"> {{menu[0].title}}
-                    <mat-menu #subMenu="matMenu" >
-                        <mat-list-item *ngFor="let link of menu[0].links">
-                        <a mat-menu-item routerLink="{{link.link}}"><mat-icon mat-list-icon>{{link.icon}}</mat-icon>{{link.name}}</a>
-                    </mat-list-item>
-                    </mat-menu>
-                </span>
-            </mat-list-item>
-
-            <mat-list-item>
-                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">account_circle</mat-icon>
-                <span *ngIf="isExpanded" at-menu-item [matMenuTriggerFor]="subMenu">{{menu[1].title}}
-                <mat-menu #subMenu="matMenu">
-                    <mat-list-item *ngFor="let link of menu[1].links" >
-                    <a mat-menu-item routerLink="{{link.link}}"><mat-icon mat-list-icon>{{link.icon}}</mat-icon>{{link.name}}</a>
-                    <a mat-menu-item (click)="logout()"><mat-icon mat-list-icon>logout</mat-icon>Log Out</a>
+            <mat-list-item *ngFor="let categoria of categoria">
+            <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">{{categoria.icono!}}</mat-icon>
+            <span *ngIf="isExpanded"   at-menu-item [matMenuTriggerFor]="subMenu"> {{categoria.nombre!}} 
+                <mat-menu #subMenu="matMenu" >
+                    <mat-list-item *ngFor="let vista of categoria.vistas!">
+                    <a mat-menu-item routerLink="{{ vista.ruta }}"><mat-icon mat-list-icon>{{vista.icono!}}</mat-icon>{{vista.nombre}}</a>
                 </mat-list-item>
-                </mat-menu></span>
-            </mat-list-item>
+                </mat-menu>
+            </span>
 
-            <mat-list-item routerLink="vistas">
-                <mat-icon mat-list-icon (click)="isExpanded = !isExpanded">important_devices</mat-icon>
-                <span *ngIf="isExpanded">Views</span>
             </mat-list-item>
            
-        </mat-nav-list> 
+        </mat-nav-list>  
 
     </mat-sidenav>
 

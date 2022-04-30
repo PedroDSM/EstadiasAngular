@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, tap } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Respuesta } from 'src/app/auth/Models/Cmodel';
 import { environment } from 'src/environments/environment';
 
@@ -15,6 +15,20 @@ export class InicioService {
   get refresh$(){
     return this._refresh$;
   }
-
-
+  getAll(): Observable<any>{  
+    return this.http.get<Respuesta>(environment.urlC+'categories')
+    .pipe(
+      tap(()=>{
+        this._refresh$.next()
+      })
+      )
+  }
+  // getVistas(): Observable<any>{  
+  //   return this.http.get<Respuesta>(environment.urlC+'categories')
+  //   .pipe(
+  //     tap(()=>{
+  //       this._refresh$.next()
+  //     })
+  //     )
+  //   }
 }
